@@ -1,10 +1,10 @@
+[lag]{English}
+[简体中文]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_zh.md}
+[English]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_en.md}
 
 # Home
 
 Welcome to the PaperZD wiki!
-
-
-
 
 # 01. Overview
 
@@ -60,11 +60,12 @@ By default PaperZD comes with a **“Flipbook Animation Source”** which lets t
 
 ![3-1](https://drfs.ctcontents.com/file/12489212/17569905132288/8e2cd9/UE.Documentation/PaperZD/image/3-1.png)
 
->ℹ️ Note: If there aren’t any extra Animation Sources supported besides Paper2D Flipbooks, the system will now create a new asset, otherwise it will ask you to first identify which type of Animation Source you want to create.
+> ℹ️ Note: If there aren’t any extra Animation Sources supported besides Paper2D Flipbooks, the system will now create a new asset, otherwise it will ask you to first identify which type of Animation Source you want to create.
 
 With the newly created Animation Source, which we named “MyAnimSource” we will begin the setup of the animations for our character:
 
 ![3-2](https://drfs.ctcontents.com/file/12489212/17569905132289/359372/UE.Documentation/PaperZD/image/3-2.png)
+
 ## **AnimSequence** creation and setup
 
 The AnimSequence is the object that contains the **Animation** to be rendered, and any metadata pertaining to events inside it (like **AnimNotifies**). **AnimSequences** live inside an **AnimationSource** and thus, we need to specify one when creating a new **AnimSequence**.
@@ -82,7 +83,6 @@ We’ll call this AnimSequence “MyFirstAnimSequence”
 ![3-5](https://drfs.ctcontents.com/file/12489212/17569905132292/053259/UE.Documentation/PaperZD/image/3-5.png)
 
 After that, double click on either your **AnimationSource** or your **AnimSequence**, to enter the **[Animation Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-editor)** .
-
 
 ## The Animation Editor
 
@@ -117,7 +117,7 @@ We can then set its Flipbook to be the **Walking** animation
 
 ![3-13](https://drfs.ctcontents.com/file/12489212/17569905132275/5485e1/UE.Documentation/PaperZD/image/3-13.png)
 
->ℹ️ NOTE: By default the **AnimSequences** created via this method are stored in a **folder** called **AnimSequences** which will be created **on the same level as the AnimationSource**. This behavior can be changed in the **PaperZD Editor section in the Projects settings**.
+> ℹ️ NOTE: By default the **AnimSequences** created via this method are stored in a **folder** called **AnimSequences** which will be created **on the same level as the AnimationSource**. This behavior can be changed in the **PaperZD Editor section in the Projects settings**.
 
 We can also proceed to rename our **AnimSequences** with a more recognizable name, let’s call them **Idle** and **Walk** respectively. Renaming can be done in the [Animation Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-editor) by simply clicking the animation and pressing **F2**.
 
@@ -136,6 +136,7 @@ We’ll call it “MyAnimBP”
 ![3-17](https://drfs.ctcontents.com/file/12489212/17569905132280/95a846/UE.Documentation/PaperZD/image/3-17.png)
 
 This asset will open the “[Animation Blueprint Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-blueprint-editor)”
+
 ## The Animation Blueprint Editor
 
 When opening the **Animation Blueprint Editor** for the first time, you’ll see a familiar Blueprint Editor window, with an Event Graph and an added **Animation Graph**
@@ -151,14 +152,16 @@ As a simple approach, we will use a `Select` node to switch between our two alre
 ![3-20](https://drfs.ctcontents.com/file/12489212/17569905132283/fc5a6f/UE.Documentation/PaperZD/image/3-20.png)
 
 Other nodes can also be used to specify more complex behavior, like using animation state machines. Those will be explained in later chapters. (TODO: Link)
+
 ## The Animation Component and PaperZDCharacter
 
 With the animation logic created, we need to now specify that we want to use it with our character, for this PaperZD comes with a **PaperZDAnimationComponent** that can be added to any Class/Object to drive their animations.
 The **AnimationComponent** requires the following data to be set to ensure correct behavior.
+
 - **AnimInstanceClass**: This is the class of the **AnimationBlueprint** you have created and that you wish to use for driving the animations of this component.
 - **RenderComponent**: The **PrimitiveComponent** that will be rendering the actual animation, for default behaviors (using Paper2D), this should be a **FlipbookComponent**.
 
->Note: The **RenderComponent** should be compatible with the **AnimationBlueprint** that you specified.
+> Note: The **RenderComponent** should be compatible with the **AnimationBlueprint** that you specified.
 
 For default Paper2D characters, PaperZD comes with a **PaperZDCharacter** that already sets up the **RenderComponent** to the main **PaperFlipbook**. If your goal is to create a simple Paper2D character, then inheriting from this class is a good option.
 
@@ -173,11 +176,6 @@ and we’ll set the **AnimInstanceClass** to point to our created **AnimationBlu
 If we now hit play, we should be able to see the animation changing between **Walk**/**Idle** when moving and standing still.
 
 ![3-23](https://drfs.ctcontents.com/file/12489212/17569905132286/4c60cd/UE.Documentation/PaperZD/image/3-23.png)
-
-
-
-
-
 
 # 04. Creating animation events and notifies
 
@@ -218,11 +216,6 @@ If we compile and play, we should be able to see the behavior being triggered at
 
 ![4-6](https://drfs.ctcontents.com/file/12489212/17569905140643/e1530a/UE.Documentation/PaperZD/image/4-6.png)
 
-
-
-
-
-
 # 05. Customizing output of the Animation Graph
 
 The **Animation Graph** comes with a set of **Animation Nodes**, that tell the system which animation it should use at a specific time. In previous chapters we’ve used the `Select Animation by Bool` to select between two outputs depending on a boolean value.
@@ -251,8 +244,6 @@ You can see that you can actually change different values like the **PlayRate**,
 In this specific case, we could change how quick the **Idle** animation would play, and make it run slower if the character is tired or even pause it entirely.
 There are multiple nodes and settings, to ensure the animations work as intended with the least amount of code as possible.
 
-
-
 # 06. The state machine
 
 In previous chapters we created a very simple 2 state animation character that simply switched between animations depending on its velocity. While this was easy to follow, it doesn’t scale well and the more the character increases in size, the more complex the animation logic becomes.
@@ -265,7 +256,7 @@ First, we’ll create a new `StateMachine` node on the **Animation Graph**, we�
 
 ![6-2](https://drfs.ctcontents.com/file/12489212/17569905142763/030ee1/UE.Documentation/PaperZD/image/6-2.png)
 
->ℹ️ Note: As any other Animation Node, the `StateMachine` can be outputted to any other node and concatenated as we did in the previous chapter.
+> ℹ️ Note: As any other Animation Node, the `StateMachine` can be outputted to any other node and concatenated as we did in the previous chapter.
 
 Double clicking the `StateMachine` allows us to modify its underlying graph, inside of it we’ll find a single `Out` node, that serves as the root of the state machine, from here we can start building our logic.
 
@@ -316,9 +307,6 @@ If we press play now, we’ll see that the character changes behavior and altern
 
 ![6-15](https://drfs.ctcontents.com/file/12489212/17569905142761/8213f6/UE.Documentation/PaperZD/image/6-15.png)
 
-
-
-
 # 07. Creating compact graphs with JumpNodes
 
 We’ve used the state machine to drive the animations of our character in a standard way, the features we’ve seen up until now are shared with the default behavior from the state machines present on the Engine’s **AnimationBlueprints**, but there are some 2D specific features that we can use to make 2D development easier and more manageable, and to overcome hurdles that come with the nature of frame by frame animations like Paper2D flipbooks are.
@@ -367,10 +355,6 @@ If you test now, the character will have a Jump/Fall animation setup, but it wil
 
 ![7-8](https://drfs.ctcontents.com/file/12489212/17569905143438/f163ed/UE.Documentation/PaperZD/image/7-8.png)
 
-
-
-
-
 # 08. Transitional Animations
 
 ## Creating intermediate states and their drawbacks.
@@ -401,15 +385,16 @@ After that, we need to set the transition between **JumpApex** and **falling**. 
 
 ![8-5](https://drfs.ctcontents.com/file/12489212/17569905144031/47a8b7/UE.Documentation/PaperZD/image/8-5.png)
 
->ℹ️ Note: It's usually prefered to use the `TimeRemaining` nodes when possible, but sometimes they are not available as they can only show transition graphs that are relevant to them. On those cases using the **AnimPlayer** is a good way to circumvent those issues.
+> ℹ️ Note: It's usually prefered to use the `TimeRemaining` nodes when possible, but sometimes they are not available as they can only show transition graphs that are relevant to them. On those cases using the **AnimPlayer** is a good way to circumvent those issues.
 
->ℹ️ Note: It’s important that the animation is set to non-looping, as the playback progress could loop before we trigger this rule. This is especially true in low framerate environments.
+> ℹ️ Note: It’s important that the animation is set to non-looping, as the playback progress could loop before we trigger this rule. This is especially true in low framerate environments.
 
->ℹ️ Note2: The **AnimationPlayer** can manage multiple animations at the same time, the Playback Progress will refer to the animation with the biggest weight that is being processed currently. This is not something that non-blendable animation sources (like Paper2D Flipbooks) need to take into consideration, as blending is not available and thus, there’s only one animation running at any time.
+> ℹ️ Note2: The **AnimationPlayer** can manage multiple animations at the same time, the Playback Progress will refer to the animation with the biggest weight that is being processed currently. This is not something that non-blendable animation sources (like Paper2D Flipbooks) need to take into consideration, as blending is not available and thus, there’s only one animation running at any time.
 
 With this setup, we now can see how the flow of the character improves dramatically due to the intermediate animation, but this also brings a new issue. What happens if we’re in the middle of the **AirTrans** animation and suddenly hit the floor? The animation would still continue playing until it reaches the end, as per the transition rule. We need to add an extra check for being **grounded**. The animation logic starts to bloat and the more intermediate states we want to add to make a richer character, the more the graph becomes unmanageable.
 
 We can fix this issue by replacing these intermediate states with a custom feature from PaperZD: **Transitional Animations**.
+
 ## Improving animation flow with **Transitional Animations**
 
 As we saw in the previous chapter, adding intermediate animations is a cumbersome process that requires adding more states (and thus more logic) to an animation graph which in turn bloats it extremely quickly, making it really hard to debug and manage for even medium-sized projects. PaperZD comes with a feature that attempts to solve this: **Transitional Animations**.
@@ -430,13 +415,11 @@ Now we can click on the **Open Animation Graph** button that is at the side of t
 
 ![8-8](https://drfs.ctcontents.com/file/12489212/17569905144035/5b45c7/UE.Documentation/PaperZD/image/8-8.png)
 
->ℹ️ Note: You’ll see that inside this graph, you will be unable to add state machines and set the animations to loop. Every animation in this graph is meant to have an end, and thus, looping will be disabled.
+> ℹ️ Note: You’ll see that inside this graph, you will be unable to add state machines and set the animations to loop. Every animation in this graph is meant to have an end, and thus, looping will be disabled.
 
 With this, the transitional animation has been correctly set up, no more code nor configuration is needed. If you run the example now, you’ll see that the character works just as before, but it now also aborts the transitional animation when touching the ground before it finishes.
 
 Transitional animations are a key feature of PaperZD and a very powerful way to give more life and movement to a character without increasing the complexity of the animation graph.
-
-
 
 # 09. Binding playback events
 
@@ -460,19 +443,17 @@ This object comes with a set of interesting callbacks and events for managing th
 
 Using this object, you can easily pause the playback, change the playback mode (forward or reversed) and query the current state of rendering (knowing the time of the current animation, which animation is playing, etc).
 
->ℹ️ Note: Certain calls like the current animation or animation time, only take into account the biggest weighted animation on the mix. This is only important on skeleton and blending enabled animation sources, as those can mix multiple animations into a final blend.
+> ℹ️ Note: Certain calls like the current animation or animation time, only take into account the biggest weighted animation on the mix. This is only important on skeleton and blending enabled animation sources, as those can mix multiple animations into a final blend.
 
 The **AnimPlayer** also comes with a set of events that get automatically called during playback:
 
 ![9-4](https://drfs.ctcontents.com/file/12489212/17569905144237/8645b0/UE.Documentation/PaperZD/image/9-4.png)
 
-Two of these are already implemented by the **AnimationInstance** and can be overridden directly: **Playback Complete** 
+Two of these are already implemented by the **AnimationInstance** and can be overridden directly: **Playback Complete**
 
 ![9-5](https://drfs.ctcontents.com/file/12489212/17569905144239/37eb8f/UE.Documentation/PaperZD/image/9-5.png)
 
 These events (specifically **Playback Complete**) are how the **Transitional Graphs** detect that the transitional animation has finished its playback. You can bind or implement them to be notified when the rendering of an animation changes.
-
-
 
 # 10. Adding support for Multi‐Directional Games (Top‐down, Isometric, etc)
 
@@ -516,7 +497,7 @@ Because the example project doesn’t contain a top-down animation, we’ll use 
 
 ### Note about directions:
 
->ℹ️ Directional sequences are meant to represent the same animation, and thus, assumes that all of the sequences have the same length. The length of the sequence will be inferred by the first node (Node 0).
+> ℹ️ Directional sequences are meant to represent the same animation, and thus, assumes that all of the sequences have the same length. The length of the sequence will be inferred by the first node (Node 0).
 
 If we focus on the widget and hold the shift key we can move around the preview node that will display which animation would be displayed depending on the angle we’re inputting to the sequence.
 
@@ -529,6 +510,7 @@ The resulting AnimSequence can then be used, the notifies will be triggered as n
 Going back to the **Animation Blueprint**, we will now let the **Animation Graph** know which direction we want the system to render the animation (and thus, which flipbook will be displayed). For this we simply concatenate a **“Set Directionality”** node, that will set up the correct metadata for the correct animation data to be evaluated.
 
 We will use the character’s velocity as the directionality input to the node, this is a **FVector2D **that will mirror the **green preview node**. This input can be whatever your project needs, for example:
+
 - The angle difference between the camera and the forward direction of an enemy (for boomer shooters).
 - The actor forward vector for top-down games.
 - Last non-zero velocity.
@@ -536,14 +518,11 @@ We will use the character’s velocity as the directionality input to the node, 
 
 ![10-9](https://drfs.ctcontents.com/file/12489212/17569905144400/2acdb9/UE.Documentation/PaperZD/image/10-9.png)
 
->Note: Changing directions won’t reset the playback time of the animation.
+> Note: Changing directions won’t reset the playback time of the animation.
 
 With this we have added directionality to our character. The directionality information is made per-character and not per-animation which ensures that set-up is fast. The system will not fail if a non-directional sprite is presented even if directionality is set.
 
 This way of implementing the characters should be fast to iterate, simply add as many directional animations as needed, then feed the angle in which you are “rendering” the animation, the system will select the correct animation to render for you.
-
-
-
 
 # 11. Using Animation Overrides.
 
@@ -565,15 +544,13 @@ To be able to use overrides, first we need to let the AnimationBlueprint where i
 
 This will create a new **Override Slot** node that can be called directly by code.
 
->ℹ️ When adding an **Override Slot**, any nodes to the left of this one will not affect the final animation state when the override is active, this means that for **Directional Sequences** its usually best to leave the direction nodes to the right, so even when the override is active, the animation directions are correctly set.
-
+> ℹ️ When adding an **Override Slot**, any nodes to the left of this one will not affect the final animation state when the override is active, this means that for **Directional Sequences** its usually best to leave the direction nodes to the right, so even when the override is active, the animation directions are correctly set.
 
 # 12. Creating Custom Animation Notifies
 
 You can create your own notifies by inheriting from **PaperZDAnimNotify** and **PaperZDAnimNotifyState**. These notifies can be shared through different animation sources and are a great place to build common functionality.
 
 ![12-1](https://drfs.ctcontents.com/file/12489212/17569905144554/2d8769/UE.Documentation/PaperZD/image/12-1.png)
-
 
 If we create a notify called “MyNotify”, and then going to the Animation Timeline, we’re able to see that it exists.
 
@@ -603,16 +580,12 @@ In the following example, we use the Render component location to identify where
 
 ![12-9](https://drfs.ctcontents.com/file/12489212/17569905144565/dfa3bd/UE.Documentation/PaperZD/image/12-9.png)
 
-
-
-
-
-
 # 13. Applying skins to your characters
 
 With the new v2.2 version, PaperZD now allows you to apply 'skins' to your characters, enabling you to quickly change how they look while maintaining the same animation logic that has been previously coded.
 
 Changing skins is the perfect way to:
+
 - Change attires of your character.
 - Modify equipment or body-parts on composite sprites.
 - Create a master AnimationBlueprint for enemies that behave the same, and just changing the way they look.
@@ -639,9 +612,6 @@ To apply the skin you simply call the following node, specifying the asset to us
 
 The "Layer" argument is used when creating composite animations, which will be seen on the next chapter. For now simply use "Layer 0" which points to the main render component.
 
-
-
-
 # 14. Creating composite animations using layers
 
 ## Building a composite Animation Source
@@ -664,7 +634,7 @@ Now, we can go into the details of any **AnimSequence** and setup the base body 
 
 This enables us to create an animation piece by piece and even apply skins to each body part separately to create a fully customizable character which can be used as basis for a 'character customization' like mechanic on games.
 
->ℹ️ Its important to note that each animation layer has been created to perfectly match in size and duration to the main body part, so effectively they run in tandem overlayed over each other, creating the composite animation.
+> ℹ️ Its important to note that each animation layer has been created to perfectly match in size and duration to the main body part, so effectively they run in tandem overlayed over each other, creating the composite animation.
 
 ## Setting up your character to use the layered animations.
 
@@ -689,25 +659,5 @@ Now you have a fully functioning layered character that works just as a normal n
 ![14-7](https://drfs.ctcontents.com/file/12489212/17569905144947/9d0754/UE.Documentation/PaperZD/image/14-7.png)
 
 **Note:**
->ℹ️ When adding skins to layers, remember that **Layer 0** is your main render component, and **Layer 1** and forward are your composite components, so in this case we're applying a skin to the "Lower" body part.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> ℹ️ When adding skins to layers, remember that **Layer 0** is your main render component, and **Layer 1** and forward are your composite components, so in this case we're applying a skin to the "Lower" body part.
