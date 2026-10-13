@@ -2,11 +2,11 @@
 [简体中文]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_zh.md}
 [English]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_en.md}
 
-# 首页
+## 首页
 
 欢迎来到 PaperZD 知识库！
 
-# 01. 概述
+## 01. 概述
 
 PaperZD 的出现是为了回应 Unreal Engine 对 2D 游戏支持不足的问题，它旨在帮助用户像常规 3D 开发中那样，通过绑定逻辑来轻松创建复杂的动画角色，同时将体验调整为更好地服务于 2D 游戏开发。
 
@@ -24,7 +24,7 @@ PaperZD 还允许向系统中添加"扩展（Extensions）"，从而可以使用
 
 当前版本的插件（称为 V2.0）大幅重写了旧架构，旨在打造一款既能服务大型项目也能服务小型项目的工具，成为任何旨在 Unreal Engine 中开发 2D 游戏的用户的必备软件。
 
-# 02. 安装
+## 02. 安装
 
 ### 如何安装
 
@@ -50,9 +50,9 @@ PaperZD 还允许向系统中添加"扩展（Extensions）"，从而可以使用
 
 > ℹ️ 每当系统首次加载使用之前版本（v.1.4.3）创建的 AnimationBlueprint 时，它会自动更新该蓝图并为其创建一个"Animation Source"，同时将每个 AnimSequence 重新指向该对象作为父级。由于 Unreal Engine 加载协议的性质，我们无法强制包保存，只能标记为脏状态，需要用户确保它们被正确保存。
 
-# 03. 设置动画对象
+## 03. 设置动画对象
 
-## 创建 **AnimationSource**
+### 创建 **AnimationSource**
 
 创建新角色时的第一步是创建所谓的**动画源（Animation Source）**。该对象作为动画的源头，**AnimationBlueprint** 可以使用它来渲染角色并控制其播放。
 
@@ -66,7 +66,7 @@ PaperZD 默认自带一个 **"翻页动画源（Flipbook Animation Source"**，�
 
 ![3-2](https://drfs.ctcontents.com/file/12489212/17569905132289/359372/UE.Documentation/PaperZD/image/3-2.png)
 
-## **AnimSequence** 的创建和设置
+### **AnimSequence** 的创建和设置
 
 AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事件元数据（如 **AnimNotifies**）的对象。**AnimSequences** 存在于 **AnimationSource** 内部，因此在创建新的 **AnimSequence** 时需要指定一个 AnimationSource。
 
@@ -84,7 +84,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 之后，双击你的 **AnimationSource** 或 **AnimSequence**，进入 **[Animation Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-editor)**。
 
-## 动画编辑器（The Animation Editor）
+### 动画编辑器（The Animation Editor）
 
 首次打开资源时，你会看到以下界面：
 
@@ -136,7 +136,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 此资源将打开"[Animation Blueprint Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-blueprint-editor)"
 
-## 动画蓝图编辑器（The Animation Blueprint Editor）
+### 动画蓝图编辑器（The Animation Blueprint Editor）
 
 首次打开 **Animation Blueprint Editor** 时，你会看到一个熟悉的蓝图编辑器窗口，带有 Event Graph 和新增的 **Animation Graph**
 
@@ -152,7 +152,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 还可以使用其他节点来指定更复杂的行为，例如使用动画状态机。这些将在后面的章节中解释。（TODO: Link）
 
-## 动画组件和 PaperZDCharacter
+### 动画组件和 PaperZDCharacter
 
 动画逻辑创建完成后，我们需要指定要将其与角色一起使用，为此 PaperZD 自带一个 **PaperZDAnimationComponent**，可以添加到任何类/对象上来驱动其动画。
 
@@ -177,7 +177,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 ![3-23](https://drfs.ctcontents.com/file/12489212/17569905132286/4c60cd/UE.Documentation/PaperZD/image/3-23.png)
 
-# 04. 创建动画事件和通知
+## 04. 创建动画事件和通知
 
 要实现丰富的动画，你不仅需要能够在正确的时间和情况下正确显示动画（我们通过使用 **AnimationBlueprint** 实现了这一点），还需要能够在精确的时间点播放效果、触发事件和播放声音。
 
@@ -217,7 +217,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 ![4-6](https://drfs.ctcontents.com/file/12489212/17569905140643/e1530a/UE.Documentation/PaperZD/image/4-6.png)
 
-# 05. 自定义 Animation Graph 的输出
+## 05. 自定义 Animation Graph 的输出
 
 **Animation Graph** 带有一组 **Animation Nodes**，用于告诉系统在特定时间应该使用哪个动画。在之前的章节中，我们使用了 `Select Animation by Bool` 来根据布尔值在两个输出之间进行选择。
 
@@ -249,7 +249,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 有多个节点和设置，以确保动画以最少的代码量按预期工作。
 
-# 06. 状态机
+## 06. 状态机
 
 在之前的章节中，我们创建了一个非常简单的 2 状态动画角色，它仅根据速度在动画之间切换。虽然这很容易理解，但它不能很好地扩展，角色越复杂，动画逻辑就越复杂。
 
@@ -313,7 +313,7 @@ AnimSequence 是包含要渲染的**动画（Animation）**以及其中相关事
 
 ![6-15](https://drfs.ctcontents.com/file/12489212/17569905142761/8213f6/UE.Documentation/PaperZD/image/6-15.png)
 
-# 07. 使用 JumpNodes 创建紧凑的图
+## 07. 使用 JumpNodes 创建紧凑的图
 
 我们已经使用状态机以标准方式驱动角色的动画，到目前为止我们看到的特性与引擎 **AnimationBlueprints** 中状态机的默认行为共享，但有一些 2D 专属功能我们可以用来使 2D 开发更容易、更易于管理，并克服 Paper2D 翻页动画等逐帧动画带来的挑战。
 
@@ -361,9 +361,9 @@ PaperZD 自带 `JumpNodes`，这些是"快捷"节点，你可以放在状态机�
 
 ![7-8](https://drfs.ctcontents.com/file/12489212/17569905143438/f163ed/UE.Documentation/PaperZD/image/7-8.png)
 
-# 08. 过渡动画
+## 08. 过渡动画
 
-## 创建中间状态及其缺点
+### 创建中间状态及其缺点
 
 骨骼动画相对于逐帧动画和 Paper2D 等框架有一个明显的优势，它们允许动画在状态之间自然混合，并确保动作流程不会显得过于生硬。逐帧动画由于其本质，无法自然混合，需要作为额外资源添加"混合"动画，在两个动画之间播放。
 
@@ -401,7 +401,7 @@ PaperZD 自带 `JumpNodes`，这些是"快捷"节点，你可以放在状态机�
 
 我们可以通过用 PaperZD 的自定义功能替换这些中间状态来解决这个问题：**Transitional Animations**。
 
-## 使用 **Transitional Animations** 改善动画流畅度
+### 使用 **Transitional Animations** 改善动画流畅度
 
 正如我们在上一章中看到的，添加中间动画是一个繁琐的过程，需要在动画图上添加更多状态（因此更多逻辑），这反过来又使图迅速膨胀，使得即使是中等规模的项目也很难调试和管理。PaperZD 自带一个旨在解决此问题的功能：**Transitional Animations**。
 
@@ -427,7 +427,7 @@ PaperZD 自带 `JumpNodes`，这些是"快捷"节点，你可以放在状态机�
 
 过渡动画是 PaperZD 的关键功能，是一种赋予角色更多生命力和动感而又不增加动画图复杂性的强大方式。
 
-# 09. 绑定播放事件
+## 09. 绑定播放事件
 
 有时仅仅添加动画不足以实现游戏的某些功能，需要对播放进行更细粒度的控制。因此，存在多种管理动画播放的方式，以使用户尽可能轻松地实现目标。
 
@@ -461,7 +461,7 @@ PaperZD 的播放控制通过一个作为**播放管理器（Playback manager）
 
 这些事件（特别是 **Playback Complete**）是 **Transitional Graphs** 检测过渡动画已完成播放的方式。你可以绑定或实现它们以在动画渲染更改时收到通知。
 
-# 10. 添加对多方向游戏的支持（俯视角、等距视角等）
+## 10. 添加对多方向游戏的支持（俯视角、等距视角等）
 
 到目前为止，我们已经展示了如何为横版卷轴游戏制作动画。这类游戏通常只有 2 个视角（左/右），实际上每个玩家"状态"只会使用一个动画，相反方向通常是镜像的。实际上这意味着对于每个动作，只有一个"动画"需要渲染。
 
@@ -530,13 +530,13 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 这种实现角色的方式应该迭代快速，只需添加任意数量的方向动画，然后输入你"渲染"动画的角度，系统将为你选择正确的动画进行渲染。
 
-# 11. 使用动画覆盖
+## 11. 使用动画覆盖
 
-## 何时不使用 JumpNodes
+### 何时不使用 JumpNodes
 
 在创建你的动画流程时，有时你希望用自己的动画"播放"覆盖动画图的行为，例如在执行"攻击"和其他单次触发状态时。虽然**JumpNodes**确实可以帮助修改 StateMachine 本身的行为，但这些更改不是**触发即忘（Fire and Forget）**的，触发后之前的状态将丢失。这在编码诸如受到攻击的反应或强制进入你希望保持的状态的更改时是可取的，但有时你希望一个动画播放一次然后继续之前的行为，例如"攻击动画"。**Jump Nodes**不是正确的工具，你应该使用 **Animation Overrides**
 
-## 动画覆盖和覆盖槽
+### 动画覆盖和覆盖槽
 
 简而言之，动画覆盖是一个**触发即忘**的动画，可以被触发，完成后将继续正常的动画流程。**Animation Overrides** 与 **Jump Nodes** 一样通过代码调用，但它们可以接收任何兼容的 AnimationSequence 在 AnimInstance 上播放。有两种调用此功能的方法，唯一的区别是可以接收的回调不同。
 
@@ -552,7 +552,7 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 > ℹ️ 添加 **Override Slot** 时，此节点左侧的任何节点在覆盖激活时不会影响最终动画状态，这意味着对于 **Directional Sequences**，最好将方向节点留在右侧，这样即使覆盖激活时，动画方向也能正确设置。
 
-# 12. 创建自定义动画通知
+## 12. 创建自定义动画通知
 
 你可以通过继承 **PaperZDAnimNotify** 和 **PaperZDAnimNotifyState** 来创建自己的通知。这些通知可以在不同的动画源之间共享，是构建通用功能的好地方。
 
@@ -586,7 +586,7 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 ![12-9](https://drfs.ctcontents.com/file/12489212/17569905144565/dfa3bd/UE.Documentation/PaperZD/image/12-9.png)
 
-# 13. 为你的角色应用皮肤
+## 13. 为你的角色应用皮肤
 
 随着新的 v2.2 版本，PaperZD 现在允许你为角色应用"皮肤"，使你能够快速更改它们的外观，同时保持之前编码的相同动画逻辑。
 
@@ -618,9 +618,9 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 "Layer"参数在创建复合动画时使用，将在下一章中介绍。目前只需使用"Layer 0"，它指向主渲染组件。
 
-# 14. 使用图层创建复合动画
+## 14. 使用图层创建复合动画
 
-## 构建复合 Animation Source
+### 构建复合 Animation Source
 
 自 v2.2 版本以来，现在可以创建复合动画序列来渲染分层角色。
 
@@ -632,7 +632,7 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 在这里，你可以配置你的 **Animation Source** 以允许额外的复合层来渲染与主渲染组件同步的额外动画。在此示例中，我们添加了总共 6 个额外层与角色一起渲染，并给出了正确的偏移量以便它们可以彼此叠加渲染。
 
-## 为每个图层设置动画
+### 为每个图层设置动画
 
 现在，我们可以进入任何 **AnimSequence** 的详细信息并设置基础身体动画（现在称为"Animation"），以及要渲染的额外复合层
 
@@ -642,7 +642,7 @@ PaperZD 尽可能简化了这一步骤，并提供了一个强大的功能来帮
 
 > ℹ️ 重要的是要注意，每个动画层都已创建为与主体部分在大小和持续时间上完全匹配，因此它们有效地并行运行并相互叠加，创建复合动画。
 
-## 设置你的角色以使用分层动画
+### 设置你的角色以使用分层动画
 
 默认情况下，你不需要做太多工作来设置角色以使用你创建的图层，因为工具将自动创建渲染动画并正确分层所需的组件，这是因为我们在 **Animation Component** 上默认启用了以下选项。
 

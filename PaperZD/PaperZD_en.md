@@ -2,11 +2,11 @@
 [简体中文]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_zh.md}
 [English]{https://github.com/qq292/UE.Documentation/blob/main/PaperZD/PaperZD_en.md}
 
-# Home
+## Home
 
 Welcome to the PaperZD wiki!
 
-# 01. Overview
+## 01. Overview
 
 PaperZD exists as an answer for Unreal Engine’s lack of support for 2D based games, and seeks to help its users to easily create complex animated characters, by binding the logic in a similar fashion as it’s done in usual 3D development, while adjusting the experience to better serve a 2D game.
 
@@ -24,7 +24,7 @@ PaperZD also allows for “Extensions” to be added to the system, which can al
 
 The current version of the plugin (called V2.0) heavily re-writes the old architecture and aims for creating a tool that can serve both big and small projects alike, becoming a pivotal piece of software for any user that aims to develop 2D games in Unreal Engine.
 
-# 02. Installation
+## 02. Installation
 
 ### How to install
 
@@ -50,9 +50,9 @@ Installation of extensions can be performed by adding “Plugin Extensions”, w
 
 > ℹ️ Whenever the system loads an AnimationBlueprint that was created with a previous version (v.1.4.3) for the first time, it will update it and create an “Animation Source” for it, while also re-targeting every AnimSequence to now have said object as parent. Due to the nature of Unreal Engine’s Loading protocols, we cannot force the packages to save and can only mark them dirty, it is up to the user to ensure they are properly saved.
 
-# 03. Setting up the animation objects
+## 03. Setting up the animation objects
 
-## Creation of an **AnimationSource**
+### Creation of an **AnimationSource**
 
 The first step when creating a new character, is to create what’s called an **Animation Source**. This object works as the source of animations that the **AnimationBlueprints** can use to render the character and control its playback.
 
@@ -66,7 +66,7 @@ With the newly created Animation Source, which we named “MyAnimSource” we wi
 
 ![3-2](https://drfs.ctcontents.com/file/12489212/17569905132289/359372/UE.Documentation/PaperZD/image/3-2.png)
 
-## **AnimSequence** creation and setup
+### **AnimSequence** creation and setup
 
 The AnimSequence is the object that contains the **Animation** to be rendered, and any metadata pertaining to events inside it (like **AnimNotifies**). **AnimSequences** live inside an **AnimationSource** and thus, we need to specify one when creating a new **AnimSequence**.
 
@@ -84,7 +84,7 @@ We’ll call this AnimSequence “MyFirstAnimSequence”
 
 After that, double click on either your **AnimationSource** or your **AnimSequence**, to enter the **[Animation Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-editor)** .
 
-## The Animation Editor
+### The Animation Editor
 
 When first opening the asset, you’ll find yourself with the following view:
 
@@ -137,7 +137,7 @@ We’ll call it “MyAnimBP”
 
 This asset will open the “[Animation Blueprint Editor](https://github.com/heavybullets/PaperZD/wiki/03.-Setting-up-the-animation-objects#the-animation-blueprint-editor)”
 
-## The Animation Blueprint Editor
+### The Animation Blueprint Editor
 
 When opening the **Animation Blueprint Editor** for the first time, you’ll see a familiar Blueprint Editor window, with an Event Graph and an added **Animation Graph**
 
@@ -153,7 +153,7 @@ As a simple approach, we will use a `Select` node to switch between our two alre
 
 Other nodes can also be used to specify more complex behavior, like using animation state machines. Those will be explained in later chapters. (TODO: Link)
 
-## The Animation Component and PaperZDCharacter
+### The Animation Component and PaperZDCharacter
 
 With the animation logic created, we need to now specify that we want to use it with our character, for this PaperZD comes with a **PaperZDAnimationComponent** that can be added to any Class/Object to drive their animations.
 The **AnimationComponent** requires the following data to be set to ensure correct behavior.
@@ -177,7 +177,7 @@ If we now hit play, we should be able to see the animation changing between **Wa
 
 ![3-23](https://drfs.ctcontents.com/file/12489212/17569905132286/4c60cd/UE.Documentation/PaperZD/image/3-23.png)
 
-# 04. Creating animation events and notifies
+## 04. Creating animation events and notifies
 
 For having rich animations, you not only need to be able to correctly display the animation in the correct time and situation (which we accomplished by using the **AnimationBlueprint**), but you also need to be able to play effects, trigger events and play sounds at very precise timings.
 
@@ -216,7 +216,7 @@ If we compile and play, we should be able to see the behavior being triggered at
 
 ![4-6](https://drfs.ctcontents.com/file/12489212/17569905140643/e1530a/UE.Documentation/PaperZD/image/4-6.png)
 
-# 05. Customizing output of the Animation Graph
+## 05. Customizing output of the Animation Graph
 
 The **Animation Graph** comes with a set of **Animation Nodes**, that tell the system which animation it should use at a specific time. In previous chapters we’ve used the `Select Animation by Bool` to select between two outputs depending on a boolean value.
 An important note is that the **Animation Pin** that goes inside the node (drawn like a papercut character), can be the output of any Animation node, these nodes can be concatenated to create complex behavior and switch between nodes.
@@ -244,7 +244,7 @@ You can see that you can actually change different values like the **PlayRate**,
 In this specific case, we could change how quick the **Idle** animation would play, and make it run slower if the character is tired or even pause it entirely.
 There are multiple nodes and settings, to ensure the animations work as intended with the least amount of code as possible.
 
-# 06. The state machine
+## 06. The state machine
 
 In previous chapters we created a very simple 2 state animation character that simply switched between animations depending on its velocity. While this was easy to follow, it doesn’t scale well and the more the character increases in size, the more complex the animation logic becomes.
 
@@ -307,7 +307,7 @@ If we press play now, we’ll see that the character changes behavior and altern
 
 ![6-15](https://drfs.ctcontents.com/file/12489212/17569905142761/8213f6/UE.Documentation/PaperZD/image/6-15.png)
 
-# 07. Creating compact graphs with JumpNodes
+## 07. Creating compact graphs with JumpNodes
 
 We’ve used the state machine to drive the animations of our character in a standard way, the features we’ve seen up until now are shared with the default behavior from the state machines present on the Engine’s **AnimationBlueprints**, but there are some 2D specific features that we can use to make 2D development easier and more manageable, and to overcome hurdles that come with the nature of frame by frame animations like Paper2D flipbooks are.
 
@@ -355,9 +355,9 @@ If you test now, the character will have a Jump/Fall animation setup, but it wil
 
 ![7-8](https://drfs.ctcontents.com/file/12489212/17569905143438/f163ed/UE.Documentation/PaperZD/image/7-8.png)
 
-# 08. Transitional Animations
+## 08. Transitional Animations
 
-## Creating intermediate states and their drawbacks.
+### Creating intermediate states and their drawbacks.
 
 Skeleton animations have a distinct advantage over frame by frame animations and frameworks like Paper2D, these allow for the animations to blend naturally between states, and make sure the flow of the action never feels too cut. Frame by frame animations, because of their very nature, cannot blend naturally and the “blending” animation needs to be added as an extra asset that will play in between 2 animations.
 
@@ -395,7 +395,7 @@ With this setup, we now can see how the flow of the character improves dramatica
 
 We can fix this issue by replacing these intermediate states with a custom feature from PaperZD: **Transitional Animations**.
 
-## Improving animation flow with **Transitional Animations**
+### Improving animation flow with **Transitional Animations**
 
 As we saw in the previous chapter, adding intermediate animations is a cumbersome process that requires adding more states (and thus more logic) to an animation graph which in turn bloats it extremely quickly, making it really hard to debug and manage for even medium-sized projects. PaperZD comes with a feature that attempts to solve this: **Transitional Animations**.
 
@@ -421,7 +421,7 @@ With this, the transitional animation has been correctly set up, no more code no
 
 Transitional animations are a key feature of PaperZD and a very powerful way to give more life and movement to a character without increasing the complexity of the animation graph.
 
-# 09. Binding playback events
+## 09. Binding playback events
 
 There comes times when adding animations is not enough to implement certain features of a game, and a more granular control of the playback is required. Because of this, multiple ways of managing the playback of the animations are present, to enable users to accomplish their goals as easily as possible.
 
@@ -455,7 +455,7 @@ Two of these are already implemented by the **AnimationInstance** and can be ove
 
 These events (specifically **Playback Complete**) are how the **Transitional Graphs** detect that the transitional animation has finished its playback. You can bind or implement them to be notified when the rendering of an animation changes.
 
-# 10. Adding support for Multi‐Directional Games (Top‐down, Isometric, etc)
+## 10. Adding support for Multi‐Directional Games (Top‐down, Isometric, etc)
 
 Up until this point we’ve shown how to animate a sidescroller game. These kinds of games usually just have 2 views (left/right) and will realistically only use one animation per “state” of the player, the reversed direction usually is mirrored. In practice this means that for every one action, there’s only one “animation” that needs to be rendered.
 
@@ -524,13 +524,13 @@ With this we have added directionality to our character. The directionality info
 
 This way of implementing the characters should be fast to iterate, simply add as many directional animations as needed, then feed the angle in which you are “rendering” the animation, the system will select the correct animation to render for you.
 
-# 11. Using Animation Overrides.
+## 11. Using Animation Overrides.
 
-## When not to use JumpNodes
+### When not to use JumpNodes
 
 When creating your animation flow, sometimes you wish to override the behavior of the animation graph with your own 'playback' of animations, for example when doing 'attacks' and other single shot states. While**JumpNodes** can certainly help modify the behavior of the StateMachine itself, the changes are not **Fire and Forget** and after firing them, the previous state will be lost. This is desirable when coding things like reacting to damage, or forcing changes in states that you wish for them to stay, but sometimes you wish for an animation to play once and then continue the previous behavior, like for example 'attack animations'. **Jump Nodes** are not the correct tool for this, and instead you should use **Animation Overrides**
 
-## Animation Overrides and Override Slots
+### Animation Overrides and Override Slots
 
 An animation override, simply put, is a **fire and forget** animation that can be triggered which, after finished, will go continue the normal animation flow. **Animation Overrides** just like **Jump Nodes** are called through code, but they can receive any compatible AnimationSequence to be played on the AnimInstance. Two methods exist for calling this functionality, only difference are the callbacks that can be received on them.
 
@@ -546,7 +546,7 @@ This will create a new **Override Slot** node that can be called directly by cod
 
 > ℹ️ When adding an **Override Slot**, any nodes to the left of this one will not affect the final animation state when the override is active, this means that for **Directional Sequences** its usually best to leave the direction nodes to the right, so even when the override is active, the animation directions are correctly set.
 
-# 12. Creating Custom Animation Notifies
+## 12. Creating Custom Animation Notifies
 
 You can create your own notifies by inheriting from **PaperZDAnimNotify** and **PaperZDAnimNotifyState**. These notifies can be shared through different animation sources and are a great place to build common functionality.
 
@@ -580,7 +580,7 @@ In the following example, we use the Render component location to identify where
 
 ![12-9](https://drfs.ctcontents.com/file/12489212/17569905144565/dfa3bd/UE.Documentation/PaperZD/image/12-9.png)
 
-# 13. Applying skins to your characters
+## 13. Applying skins to your characters
 
 With the new v2.2 version, PaperZD now allows you to apply 'skins' to your characters, enabling you to quickly change how they look while maintaining the same animation logic that has been previously coded.
 
@@ -612,9 +612,9 @@ To apply the skin you simply call the following node, specifying the asset to us
 
 The "Layer" argument is used when creating composite animations, which will be seen on the next chapter. For now simply use "Layer 0" which points to the main render component.
 
-# 14. Creating composite animations using layers
+## 14. Creating composite animations using layers
 
-## Building a composite Animation Source
+### Building a composite Animation Source
 
 Since version v2.2 it is now possible to create composite animation sequences to render layered characters.
 
@@ -626,7 +626,7 @@ To enable this behavior, navigate to the bottom left part of the AnimationSource
 
 In here, you can configure your **Animation Source** to allow for extra composite layers for rendering additional animations that are synched with your main render component. In this example we have added a total of 6 additional layers to be rendered alongside the character and have given them the correct offset so they can render on top of each other.
 
-## Setting up the animations per layer
+### Setting up the animations per layer
 
 Now, we can go into the details of any **AnimSequence** and setup the base body animation (now called "Animation"), and the extra composite layers to be rendered on top
 
@@ -636,7 +636,7 @@ This enables us to create an animation piece by piece and even apply skins to ea
 
 > ℹ️ Its important to note that each animation layer has been created to perfectly match in size and duration to the main body part, so effectively they run in tandem overlayed over each other, creating the composite animation.
 
-## Setting up your character to use the layered animations.
+### Setting up your character to use the layered animations.
 
 By default, you don't need to do much to set up your character to use the layers you created, as the tool will automatically create the components required to render the animations and layer them correctly, this is because we have the following option enabled by default on the **Animation Component**.
 
